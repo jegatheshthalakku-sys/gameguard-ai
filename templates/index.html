@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>GameGuard AI</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🎮 GameGuard AI</h1>
+    <p>Player Churn & Toxicity Detection System</p>
+
+    <div class="card">
+
+        <h2>Player Churn Prediction</h2>
+
+        <form action="/predict" method="POST">
+
+            <input name="matches" placeholder="Matches Played" required>
+
+            <input name="session"
+                   placeholder="Average Session Minutes"
+                   required>
+
+            <input name="days"
+                   placeholder="Days Since Last Login"
+                   required>
+
+            <input name="kills"
+                   placeholder="Average Kills" required>
+
+            <input name="winrate"
+                   placeholder="Win Rate (0-1)" required>
+
+            <button type="submit">
+                Predict Churn
+            </button>
+
+        </form>
+
+        {% if churn_result %}
+
+        <div class="result">
+            <h3>{{ churn_result }}</h3>
+
+            <p>
+                Churn Probability:
+                <strong>{{ churn_probability }}%</strong>
+            </p>
+        </div>
+
+        {% endif %}
+
+    </div>
+
+
+    <div class="card">
+
+        <h2>💬 Toxicity Detection</h2>
+
+        <form action="/toxicity" method="POST">
+
+            <input name="player_id"
+                   placeholder="Player ID" required>
+
+            <textarea name="message"
+                      placeholder="Enter chat message"
+                      required></textarea>
+
+            <button type="submit">
+                Check Message
+            </button>
+
+        </form>
+
+        {% if toxicity_result %}
+
+            {% if toxicity_result.toxic %}
+
+                <div class="danger">
+                    🚨 Toxic message detected!
+                </div>
+
+            {% else %}
+
+                <div class="safe">
+                    ✅ No toxic content detected.
+                </div>
+
+            {% endif %}
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

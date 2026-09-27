@@ -1,0 +1,15 @@
+
+GAMEGUARD AI - TOXICITY REPORT
+================================
+
+Player ID      : P001
+Date & Time    : 2026-09-27 16:34:46.783130
+
+Chat Message   : you are stupid
+
+Detected Words : stupid
+
+Status         : TOXIC CONTENT DETECTED
+Action         : Message flagged for moderation
+
+================================
